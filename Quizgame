@@ -1,0 +1,50 @@
+class QuizGame:
+    def __init__(self):
+        self.questions = [
+            {
+                "question": "What is the capital of Japan?",
+                "options": ["a) Beijing", "b) Seoul", "c) Tokyo", "d) Bangkok"],
+                "correct_answer": "c"
+            },
+            {
+                "question": "Which programming language is often used for data analysis and scientific computing?",
+                "options": ["a) Java", "b) Python", "c) C++", "d) Ruby"],
+                "correct_answer": "b"
+            },
+            {
+                "question": "What does CPU stand for?",
+                "options": ["a) Central Processing Unit", "b) Computer Processing Unit", "c) Central Processor Unit", "d) Computer Processor Unit"],
+                "correct_answer": "a"
+            }
+        ]
+        self.score = 0
+
+    def run_quiz(self):
+        print("Welcome to the Quiz Game!\n")
+        for i, question in enumerate(self.questions, 1):
+            print(f"Question {i}: {question['question']}")
+            for option in question['options']:
+                print(option)
+            
+            user_answer = input("Your answer (enter a, b, c, or d): ").lower()
+
+            while user_answer not in ['a', 'b', 'c', 'd']:
+                print("Invalid input! Please enter a, b, c, or d.")
+                user_answer = input("Your answer (enter a, b, c, or d): ").lower()
+
+            if user_answer == question['correct_answer']:
+                print("Correct!\n")
+                self.score += 1
+            else:
+                print(f"Wrong! The correct answer is {question['correct_answer'].upper()}.\n")
+
+    def display_score(self):
+        print(f"Quiz ended. Your final score is: {self.score} out of {len(self.questions)}")
+
+
+# Create an instance of the QuizGame class and run the quiz
+quiz_game = QuizGame()
+quiz_game.run_quiz()
+
+# Display the final score
+quiz_game.display_score()
